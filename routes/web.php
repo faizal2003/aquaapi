@@ -7,3 +7,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/sensor', [sen_con::class, 'index']);
+Route::post('/sensor', [sen_con::class, 'store']);
