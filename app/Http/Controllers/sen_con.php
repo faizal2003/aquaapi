@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\ValEvent;
 use App\Http\Resources\SenResource;
 use App\Models\Sen_ec;
 use Carbon\Carbon;
@@ -15,9 +16,13 @@ class sen_con extends Controller
      */
     public function index()
     {
-        $vals = Sen_ec::pluck('val');
-        $aidi = Sen_ec::pluck('id');
-        return view('table', compact('vals', 'aidi'));
+        // $coll = Sen_ec::latest('id')->take(5)->get();
+        // $vals = $coll->pluck('val');
+        // $aidi = $coll->pluck('id');
+        // $ecval = ["val"=>$vals, "id"=>$aidi];
+        // // dd($aidi);
+        // ValEvent::dispatch($vals, $aidi);
+        return view('table');
     }
 
     /**
@@ -39,10 +44,24 @@ class sen_con extends Controller
         //     'created_at' => $now
         // ]);
         // return new SenResource(true, 'add success', $sen);
-
+        // $ecval = Sen_ec::latest('id')->take(5)->get();
+        // $vals = $coll->pluck('val');
+        // $aidi = $coll->pluck('id');
+        // $ecval = ["val"=>$vals, "id"=>$aidi];
+        // var_dump($ecval);
+        // event(new ValEvent($coll));
+        // ValEvent::dispatch($ecval);
         $sen = new Sen_ec;
         $sen->val = $request->val;
         $sen->save();
+
+        $coll = Sen_ec::latest('id')->take(5)->get();
+        $vals = $coll->pluck('val');
+        $aidi = $coll->pluck('id');
+        $ecval = ["val"=>$vals, "id"=>$aidi];
+        // dd($aidi);
+        ValEvent::dispatch($vals, $aidi);
+
     }
 
     /**
