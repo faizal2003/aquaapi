@@ -10,6 +10,7 @@ class Sen_ec extends Model
     use HasFactory;
 
     protected $fillable = [
-        'val'
+        'val',
+        'time'
     ];
 }
