@@ -56,9 +56,9 @@ class sen_con extends Controller
         $sen->val = $request->val;
         $sen->time = $now;
         $sen->save();
-        Http::get('localhost:3000');
         $coll = Sen_ec::latest('id')->take(5)->get();
         $vals = $coll->pluck('val');
+        // Http::get('localhost:3000/'+$vals);
         $aidi = $coll->pluck('time');
         // $dt = Carbon::createFromTimestamp('m/d/Y h:i a', $aidi)->toDateTimeString();
         //var_dump($aidi);
