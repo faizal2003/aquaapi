@@ -65,15 +65,27 @@ class sen_warn extends Controller
 
     public function setwarn($sensor)
     {
+        $checkiswarn = Sens_warn::where('sensr', $sensor)->first();
+        // var_dump($checkiswarn->is_warn);
+
+        if ($checkiswarn->is_warn == 0){
+            Sens_warn::where('sensr', $sensor)
+          ->update(['is_warn' => 1]);
+        //   var_dump("hello");
+        }
         // set sensor warn to 1
-        Sens_warn::where('sensr', $sensor)
-      ->update(['is_warn' => 1]);
     }
 
     public function unsetwarn($sensor)
     {
         // set sensor warn to 0 
-         Sens_warn::where('sensr', $sensor)
-      ->update(['is_warn' => 0]);
+         $checkiswarn = Sens_warn::where('sensr', $sensor)->first();
+        // var_dump($checkiswarn->is_warn);
+
+        if ($checkiswarn->is_warn == 1){
+            Sens_warn::where('sensr', $sensor)
+          ->update(['is_warn' => 0]);
+        //   var_dump("hello");
+        }
     }
 }

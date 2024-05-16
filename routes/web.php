@@ -8,6 +8,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/sensor', [sen_con::class, 'index']);
+Route::get('/sensor/ph', [sen_con::class, 'indexph']);
 Route::post('/sensor', [sen_con::class, 'store']);
 Route::get('/warn/{sensor}', [sen_warn::class, 'setwarn']);
 Route::get('/unwarn/{sensor}', [sen_warn::class, 'unsetwarn']);
+Route::post('/sensor/ph', [sen_con::class, 'storeph']);

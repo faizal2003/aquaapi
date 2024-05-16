@@ -13,7 +13,8 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->validateCsrfTokens(except: [
-        'http://aquaapi.test/sensor'
+        'http://aquaapi.test/sensor',
+        'http://aquaapi.test/sensor/ph',
     ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
