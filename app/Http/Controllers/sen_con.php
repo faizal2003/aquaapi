@@ -7,6 +7,7 @@ use App\Events\PhEvent;
 use App\Http\Resources\SenResource;
 use App\Models\Sen_ec;
 use App\Models\sen_ph;
+use App\Models\Sen_wl;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon as SupportCarbon;
@@ -37,6 +38,16 @@ class sen_con extends Controller
         // // dd($aidi);
         // ValEvent::dispatch($vals, $aidi);
         return view('tableph');
+    }
+    public function indexwl()
+    {
+        // $coll = Sen_ec::latest('id')->take(5)->get();
+        // $vals = $coll->pluck('val');
+        // $aidi = $coll->pluck('id');
+        // $ecval = ["val"=>$vals, "id"=>$aidi];
+        // // dd($aidi);
+        // ValEvent::dispatch($vals, $aidi);
+        return view('tablewl');
     }
 
     /**
@@ -111,6 +122,33 @@ class sen_con extends Controller
             Http::get('aquaapi.test/unwarn/phu');
             Http::get('aquaapi.test/unwarn/phd');
             # code...
+        }
+        // Http::get('localhost:3000/'+$vals);
+        $aidi = $coll->pluck('time');
+        // $dt = Carbon::createFromTimestamp('m/d/Y h:i a', $aidi)->toDateTimeString();
+        //var_dump($aidi);
+        $ecval = ["val"=>$vals, "id"=>$aidi];
+        
+        // dd($aidi);
+        PhEvent::dispatch($vals, $aidi);
+    }
+
+    public function storewl(Request $request)
+    {
+        $now = SupportCarbon::now('Asia/Jakarta')->toTimeString();
+        $wl = new Sen_wl;
+        $wl->val = $request->val;
+        $wl->time = $now;
+        $wl->save();
+
+        $coll = Sen_wl::latest('id')->take(5)->get();
+        $vals = $coll->pluck('val');
+        if ($request->val < 20) {
+            # code...
+            Http::get('aquaapi.test/warn/wl');
+        }elseif ($request->val >= 30) {
+            # code...
+            Http::get('aquaapi.test/unwarn/wl');
         }
         // Http::get('localhost:3000/'+$vals);
         $aidi = $coll->pluck('time');
