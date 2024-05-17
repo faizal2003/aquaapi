@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Events\ValEvent;
 use App\Events\PhEvent;
+use App\Events\WlEvent;
 use App\Http\Resources\SenResource;
 use App\Models\Sen_ec;
 use App\Models\sen_ph;
@@ -157,7 +158,7 @@ class sen_con extends Controller
         $ecval = ["val"=>$vals, "id"=>$aidi];
         
         // dd($aidi);
-        PhEvent::dispatch($vals, $aidi);
+        WlEvent::dispatch($vals, $aidi);
     }
 
     /**
