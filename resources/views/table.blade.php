@@ -31,7 +31,7 @@
         type: 'line',
         data: {
             datasets: [{
-                label: '# of Votes',
+                label: 'ec',
                 borderWidth: 1
             }]
         },

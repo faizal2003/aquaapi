@@ -31,7 +31,7 @@
         type: 'line',
         data: {
             datasets: [{
-                label: '# of Votes',
+                label: 'tinggi air',
                 borderWidth: 1
             }]
         },

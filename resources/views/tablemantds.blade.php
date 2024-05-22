@@ -31,7 +31,7 @@
         type: 'line',
         data: {
             datasets: [{
-                label: 'ph',
+                label: 'tds',
                 borderWidth: 1
             }]
         },
@@ -47,9 +47,9 @@
     const mychart = new Chart(ctx, config);
 
     window.onload = function() {
-        Echo.channel('ph-val').listen("PhEvent", (e) => {
-            var arrval = JSON.parse(e.phval);
-            var arrid = JSON.parse(e.phid);
+        Echo.channel('tds-val').listen("tdsEvent", (e) => {
+            var arrval = JSON.parse(e.tdsval);
+            var arrid = JSON.parse(e.tdsid);
             // console.log(typeof arrey);
             console.log(arrid);
             // console.log(typeof e.ecval);
