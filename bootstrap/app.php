@@ -20,6 +20,7 @@ return Application::configure(basePath: dirname(__DIR__))
         'http://puh.web.id/man/tds',
         'http://puh.web.id/man/turbid',
         'http://puh.web.id/man/temp',
+        'http://puh.web.id/man/tem',
     ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
