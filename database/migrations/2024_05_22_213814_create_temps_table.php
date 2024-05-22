@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('temps', function (Blueprint $table) {
             $table->id();
-            $table->integer('val');
+            $table->float('val');
             $table->string('time');
         });
     }
