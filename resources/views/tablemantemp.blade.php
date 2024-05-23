@@ -57,7 +57,6 @@
 
             mychart.config.data.labels = arrid;
             mychart.config.data.datasets[0] = {
-                label: '# of Votes',
                 data: arrval,
                 borderWidth: 1
             };
