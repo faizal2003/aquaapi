@@ -57,6 +57,7 @@
 
             mychart.config.data.labels = arrid;
             mychart.config.data.datasets[0] = {
+                label: 'turbidity',
                 data: arrval,
                 borderWidth: 1
             };
