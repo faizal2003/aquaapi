@@ -20,13 +20,6 @@ return Application::configure(basePath: dirname(__DIR__))
         'https://puh.web.id/man/tds',
         'https://puh.web.id/man/turbid',
         'https://puh.web.id/man/temp',
-        'https://puh.web.id/sensor',
-        'https://puh.web.id/sensor/ph',
-        'https://puh.web.id/sensor/wl',
-        'https://puh.web.id/man/ph',
-        'https://puh.web.id/man/tds',
-        'https://puh.web.id/man/turbid',
-        'https://puh.web.id/man/temp',
     ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
