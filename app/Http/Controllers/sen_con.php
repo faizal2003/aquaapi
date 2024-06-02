@@ -56,10 +56,12 @@ class sen_con extends Controller
     {
         $ph = DB::table('sen_phs')->select('val')->orderBy('id', 'DESC')->first();
         $coll = Sen_ph::latest('id')->take(1)->get();
-        $vals = $coll->pluck('val');
-        
+        $vals = $coll->get('val');
+        $strval = strval($ph->val);
         return response()->json(
-            $ph
+            [
+            'val' => $strval
+        ]
         );
     }
     public function getec()
@@ -67,9 +69,11 @@ class sen_con extends Controller
         $ec = DB::table('sen_ecs')->select('val')->orderBy('id', 'DESC')->first();
         $coll = Sen_ph::latest('id')->take(1)->get();
         $vals = $coll->pluck('val');
-        
+        $strval = strval($ec->val);
         return response()->json(
-            $ec
+            [
+                'val' => $strval
+            ]
         );
     }
     public function getwl()
@@ -77,10 +81,11 @@ class sen_con extends Controller
         $wl = DB::table('sen_wls')->select('val')->orderBy('id', 'DESC')->first();
         $coll = Sen_ph::latest('id')->take(1)->get();
         $vals = $coll->pluck('val');
-        
-        return response()->json(
-            $wl
-        );
+        // dd($vals);
+        $strval = strval($wl->val);
+        return response()->json([
+            'val' => $strval
+        ]);
     }
 
     /**
