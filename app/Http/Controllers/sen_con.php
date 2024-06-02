@@ -14,6 +14,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon as SupportCarbon;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\DB;
 
 class sen_con extends Controller
 {
@@ -50,6 +51,36 @@ class sen_con extends Controller
         // // dd($aidi);
         // ValEvent::dispatch($vals, $aidi);
         return view('tablewl');
+    }
+    public function getph()
+    {
+        $ph = DB::table('sen_phs')->orderBy('id', 'DESC')->take(1)->get();
+        $coll = Sen_ph::latest('id')->take(1)->get();
+        $vals = $coll->pluck('val');
+        
+        return response()->json(
+            $ph
+        );
+    }
+    public function getec()
+    {
+        $ec = DB::table('sen_ecs')->orderBy('id', 'DESC')->take(1)->get();
+        $coll = Sen_ph::latest('id')->take(1)->get();
+        $vals = $coll->pluck('val');
+        
+        return response()->json(
+            $ec
+        );
+    }
+    public function getwl()
+    {
+        $wl = DB::table('sen_wls')->orderBy('id', 'DESC')->take(1)->get();
+        $coll = Sen_ph::latest('id')->take(1)->get();
+        $vals = $coll->pluck('val');
+        
+        return response()->json(
+            $wl
+        );
     }
 
     /**
@@ -164,12 +195,17 @@ class sen_con extends Controller
 
     public function feeder(Request $request)
     {
-        $now = SupportCarbon::now('Asia/Jakarta')->toTimeString();
-        $fd = new feed;
-        $fd->feed1 = $request->feed1;
-        $fd->feed2 = $request->feed2;
-        // $fd->time = $now;
-        $fd->save();
+        // $now = SupportCarbon::now('Asia/Jakarta')->toTimeString();
+        // $feedd = feed::all();
+
+        
+            $feede = feed::find(1);
+ 
+            $feede->feed1 = $request->feed1;
+            $feede->feed2 = $request->feed2;
+ 
+            $feede->save();
+        
     }
 
     /**

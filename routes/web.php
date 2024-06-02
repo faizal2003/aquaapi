@@ -11,6 +11,9 @@ Route::get('/', function () {
 Route::get('/sensor', [sen_con::class, 'index']);
 Route::get('/sensor/ph', [sen_con::class, 'indexph']);
 Route::get('/sensor/wl', [sen_con::class, 'indexwl']);
+Route::get('/getph', [sen_con::class, 'getph']);
+Route::get('/getec', [sen_con::class, 'getec']);
+Route::get('/getwl', [sen_con::class, 'getwl']);
 Route::get('/man/ph', [sensorController::class, 'indexph']);
 Route::get('/man/tds', [sensorController::class, 'indextds']);
 Route::get('/man/turbid', [sensorController::class, 'indexturbid']);
