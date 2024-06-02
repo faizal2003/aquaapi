@@ -54,7 +54,7 @@ class sen_con extends Controller
     }
     public function getph()
     {
-        $ph = DB::table('sen_phs')->orderBy('id', 'DESC')->first();
+        $ph = DB::table('sen_phs')->select('val')->orderBy('id', 'DESC')->first();
         $coll = Sen_ph::latest('id')->take(1)->get();
         $vals = $coll->pluck('val');
         
@@ -64,7 +64,7 @@ class sen_con extends Controller
     }
     public function getec()
     {
-        $ec = DB::table('sen_ecs')->orderBy('id', 'DESC')->first();
+        $ec = DB::table('sen_ecs')->select('val')->orderBy('id', 'DESC')->first();
         $coll = Sen_ph::latest('id')->take(1)->get();
         $vals = $coll->pluck('val');
         
@@ -74,7 +74,7 @@ class sen_con extends Controller
     }
     public function getwl()
     {
-        $wl = DB::table('sen_wls')->orderBy('id', 'DESC')->first();
+        $wl = DB::table('sen_wls')->select('val')->orderBy('id', 'DESC')->first();
         $coll = Sen_ph::latest('id')->take(1)->get();
         $vals = $coll->pluck('val');
         
