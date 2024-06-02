@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('feeds', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('feed1');
+            $table->string('feed2');
         });
     }
 

@@ -6,6 +6,7 @@ use App\Events\ValEvent;
 use App\Events\PhEvent;
 use App\Events\WlEvent;
 use App\Http\Resources\SenResource;
+use App\Models\feed;
 use App\Models\Sen_ec;
 use App\Models\sen_ph;
 use App\Models\Sen_wl;
@@ -159,6 +160,16 @@ class sen_con extends Controller
         
         // dd($aidi);
         WlEvent::dispatch($vals, $aidi);
+    }
+
+    public function feeder(Request $request)
+    {
+        $now = SupportCarbon::now('Asia/Jakarta')->toTimeString();
+        $fd = new feed;
+        $fd->feed1 = $request->feed1;
+        $fd->feed2 = $request->feed2;
+        // $fd->time = $now;
+        $fd->save();
     }
 
     /**

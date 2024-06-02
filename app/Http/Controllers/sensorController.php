@@ -20,6 +20,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon as SupportCarbon;
 use Illuminate\Support\Facades\Http;
+use Kreait\Laravel\Firebase\Facades\Firebase;
 
 class sensorController extends Controller
 {
@@ -59,80 +60,6 @@ class sensorController extends Controller
         // // dd($aidi);
         // ValEvent::dispatch($vals, $aidi);
         return view('tablemanturbid');}
-    public function storeph(Request $request)
-    {
-        $now = SupportCarbon::now('Asia/Jakarta')->toTimeString();
-        $ph = new phman;
-        $ph->val = $request->val;
-        $ph->time = $now;
-        $ph->save();
-
-        $coll = phman::latest('id')->take(5)->get();
-        $vals = $coll->pluck('val');
-        // Http::get('localhost:3000/'+$vals);
-        $aidi = $coll->pluck('time');
-        // $dt = Carbon::createFromTimestamp('m/d/Y h:i a', $aidi)->toDateTimeString();
-        //var_dump($aidi);
-        $ecval = ["val"=>$vals, "id"=>$aidi];
-        
-        // dd($aidi);
-        phfir::dispatch($vals, $aidi);
-    }
-    public function storetds(Request $request)
-    {
-        $now = SupportCarbon::now('Asia/Jakarta')->toTimeString();
-        $ph = new tds;
-        $ph->val = $request->val;
-        $ph->time = $now;
-        $ph->save();
-
-        $coll = tds::latest('id')->take(5)->get();
-        $vals = $coll->pluck('val');
-        // Http::get('localhost:3000/'+$vals);
-        $aidi = $coll->pluck('time');
-        // $dt = Carbon::createFromTimestamp('m/d/Y h:i a', $aidi)->toDateTimeString();
-        //var_dump($aidi);
-        $ecval = ["val"=>$vals, "id"=>$aidi];
-        
-        // dd($aidi);
-        tdsEvent::dispatch($vals, $aidi);
-    }
-    public function storetemp(Request $request)
-    {
-        $now = SupportCarbon::now('Asia/Jakarta')->toTimeString();
-        $ph = new temp;
-        $ph->val = $request->val;
-        $ph->time = $now;
-        $ph->save();
-
-        $coll = temp::latest('id')->take(5)->get();
-        $vals = $coll->pluck('val');
-        // Http::get('localhost:3000/'+$vals);
-        $aidi = $coll->pluck('time');
-        // $dt = Carbon::createFromTimestamp('m/d/Y h:i a', $aidi)->toDateTimeString();
-        //var_dump($aidi);
-        $ecval = ["val"=>$vals, "id"=>$aidi];
-        
-        // dd($aidi);
-        tempEvent::dispatch($vals, $aidi);
-    }
-    public function storeturbid(Request $request)
-    {
-        $now = SupportCarbon::now('Asia/Jakarta')->toTimeString();
-        $ph = new turbid;
-        $ph->val = $request->val;
-        $ph->time = $now;
-        $ph->save();
-
-        $coll = turbid::latest('id')->take(5)->get();
-        $vals = $coll->pluck('val');
-        // Http::get('localhost:3000/'+$vals);
-        $aidi = $coll->pluck('time');
-        // $dt = Carbon::createFromTimestamp('m/d/Y h:i a', $aidi)->toDateTimeString();
-        //var_dump($aidi);
-        $ecval = ["val"=>$vals, "id"=>$aidi];
-        
-        // dd($aidi);
-        turbidEvent::dispatch($vals, $aidi);
-    }
+    
+   
 }
