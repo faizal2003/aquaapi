@@ -198,7 +198,7 @@ class sen_con extends Controller
         WlEvent::dispatch($vals, $aidi);
     }
 
-    public function feeder(Request $request)
+    public function feeder($fed1, $fed2)
     {
         // $now = SupportCarbon::now('Asia/Jakarta')->toTimeString();
         // $feedd = feed::all();
@@ -206,8 +206,8 @@ class sen_con extends Controller
         
             $feede = feed::find(1);
  
-            $feede->feed1 = $request->feed1;
-            $feede->feed2 = $request->feed2;
+            $feede->feed1 = $fed1;
+            $feede->feed2 = $fed2;
  
             $feede->save();
         
