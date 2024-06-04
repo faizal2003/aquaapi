@@ -25,6 +25,7 @@ Route::post('/sensor', [sen_con::class, 'store']);
 Route::post('/sensor/ph', [sen_con::class, 'storeph']);
 Route::post('/sensor/wl', [sen_con::class, 'storewl']);
 Route::get('/feed/{fed1}/{fed2}', [sen_con::class, 'feeder']);
+Route::get('/getfeed', [sen_con::class, 'getfeeder']);
 Route::post('/man/ph', [sensorController::class, 'storeph']);
 Route::post('/man/tds', [sensorController::class, 'storetds']);
 Route::post('/man/turbid', [sensorController::class, 'storeturbid']);

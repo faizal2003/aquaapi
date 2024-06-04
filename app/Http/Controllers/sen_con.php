@@ -198,6 +198,26 @@ class sen_con extends Controller
         WlEvent::dispatch($vals, $aidi);
     }
 
+    public function getfeeder()
+    {
+        // $now = SupportCarbon::now('Asia/Jakarta')->toTimeString();
+        // $feedd = feed::all();
+
+        
+            $fd1 = DB::table('feeds')->select('feed1')->first();
+            $fd2 = DB::table('feeds')->select('feed2')->first();
+            $coll = Sen_ph::latest('id')->take(1)->get();
+            $vals = $coll->get('val');
+            $strfd1 = strval($fd1->feed1);
+            $strfd2 = strval($fd2->feed2);
+            return response()->json(
+            [
+            'feed1' => $strfd1,
+            'feed2' => $strfd2
+            ]
+        );
+        
+    }
     public function feeder($fed1, $fed2)
     {
         // $now = SupportCarbon::now('Asia/Jakarta')->toTimeString();
