@@ -169,8 +169,8 @@ class sen_con extends Controller
             $buttons = null, 
             $schedule = null
         );
-            Http::get('aquaapi.test/warn/phd');
-            Http::get('aquaapi.test/unwarn/phu');
+            // Http::get('aquaapi.test/warn/phd');
+            // Http::get('aquaapi.test/unwarn/phu');
         }elseif ($request->val < 5) {
             # code...
              OneSignal::sendNotificationToAll(
@@ -180,8 +180,8 @@ class sen_con extends Controller
             $buttons = null, 
             $schedule = null
         );
-            Http::get('aquaapi.test/warn/phu');
-            Http::get('aquaapi.test/unwarn/phd');
+            // Http::get('aquaapi.test/warn/phu');
+            // Http::get('aquaapi.test/unwarn/phd');
         }else {
             Http::get('aquaapi.test/unwarn/phu');
             Http::get('aquaapi.test/unwarn/phd');
