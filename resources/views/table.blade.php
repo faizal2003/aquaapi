@@ -59,7 +59,7 @@
             mychart.config.data.datasets[0] = {
                 label: 'ec',
                 data: arrval,
-                borderWidth: 1
+                borderWidth: 5
             };
             mychart.update('none');
         })
