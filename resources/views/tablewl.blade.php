@@ -32,7 +32,7 @@
         data: {
             datasets: [{
                 label: 'tinggi air',
-                borderWidth: 1
+                borderWidth: 5
             }]
         },
         options: {

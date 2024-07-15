@@ -24,33 +24,18 @@ class sen_con extends Controller
      */
     public function index()
     {
-        // $coll = Sen_ec::latest('id')->take(5)->get();
-        // $vals = $coll->pluck('val');
-        // $aidi = $coll->pluck('id');
-        // $ecval = ["val"=>$vals, "id"=>$aidi];
-        // // dd($aidi);
-        // ValEvent::dispatch($vals, $aidi);
+
         return view('table');
     }
 
     public function indexph()
     {
-        // $coll = Sen_ec::latest('id')->take(5)->get();
-        // $vals = $coll->pluck('val');
-        // $aidi = $coll->pluck('id');
-        // $ecval = ["val"=>$vals, "id"=>$aidi];
-        // // dd($aidi);
-        // ValEvent::dispatch($vals, $aidi);
+
         return view('tableph');
     }
     public function indexwl()
     {
-        // $coll = Sen_ec::latest('id')->take(5)->get();
-        // $vals = $coll->pluck('val');
-        // $aidi = $coll->pluck('id');
-        // $ecval = ["val"=>$vals, "id"=>$aidi];
-        // // dd($aidi);
-        // ValEvent::dispatch($vals, $aidi);
+
         return view('tablewl');
     }
     public function getph()
@@ -110,18 +95,7 @@ class sen_con extends Controller
     public function store(Request $request)
     {
         $now = SupportCarbon::now('Asia/Jakarta')->toTimeString();
-        // $sen = Sen_ec::create([
-        //     'val' => $request->val,
-        //     'created_at' => $now
-        // ]);
-        // return new SenResource(true, 'add success', $sen);
-        // $ecval = Sen_ec::latest('id')->take(5)->get();
-        // $vals = $coll->pluck('val');
-        // $aidi = $coll->pluck('id');
-        // $ecval = ["val"=>$vals, "id"=>$aidi];
-        // var_dump($ecval);
-        // event(new ValEvent($coll));
-        // ValEvent::dispatch($ecval);
+
         $sen = new Sen_ec;
         $sen->val = $request->val;
         $sen->time = $now;
@@ -138,14 +112,12 @@ class sen_con extends Controller
                 $buttons = null, 
                 $schedule = null
             );
-            // Http::get('aquaapi.test/warn/ec');
         }
         $aidi = $coll->pluck('time');
-        // $dt = Carbon::createFromTimestamp('m/d/Y h:i a', $aidi)->toDateTimeString();
-        //var_dump($aidi);
+
         $ecval = ["val"=>$vals, "id"=>$aidi];
         
-        // dd($aidi);
+
         ValEvent::dispatch($vals, $aidi);
 
     }
@@ -169,8 +141,7 @@ class sen_con extends Controller
             $buttons = null, 
             $schedule = null
         );
-            // Http::get('aquaapi.test/warn/phd');
-            // Http::get('aquaapi.test/unwarn/phu');
+
         }elseif ($request->val < 5) {
             # code...
              OneSignal::sendNotificationToAll(
@@ -180,20 +151,17 @@ class sen_con extends Controller
             $buttons = null, 
             $schedule = null
         );
-            // Http::get('aquaapi.test/warn/phu');
-            // Http::get('aquaapi.test/unwarn/phd');
+
         }else {
             Http::get('aquaapi.test/unwarn/phu');
             Http::get('aquaapi.test/unwarn/phd');
             # code...
         }
-        // Http::get('localhost:3000/'+$vals);
+
         $aidi = $coll->pluck('time');
-        // $dt = Carbon::createFromTimestamp('m/d/Y h:i a', $aidi)->toDateTimeString();
-        //var_dump($aidi);
+
         $ecval = ["val"=>$vals, "id"=>$aidi];
-        
-        // dd($aidi);
+
         PhEvent::dispatch($vals, $aidi);
     }
 
@@ -221,10 +189,9 @@ class sen_con extends Controller
             # code...
             Http::get('aquaapi.test/unwarn/wl');
         }
-        // Http::get('localhost:3000/'+$vals);
+
         $aidi = $coll->pluck('time');
-        // $dt = Carbon::createFromTimestamp('m/d/Y h:i a', $aidi)->toDateTimeString();
-        //var_dump($aidi);
+
         $ecval = ["val"=>$vals, "id"=>$aidi];
         
         // dd($aidi);
@@ -233,8 +200,7 @@ class sen_con extends Controller
 
     public function getfeeder()
     {
-        // $now = SupportCarbon::now('Asia/Jakarta')->toTimeString();
-        // $feedd = feed::all();
+
 
         
             $fd1 = DB::table('feeds')->select('feed1')->first();
@@ -253,8 +219,7 @@ class sen_con extends Controller
     }
     public function feeder($fed1, $fed2)
     {
-        // $now = SupportCarbon::now('Asia/Jakarta')->toTimeString();
-        // $feedd = feed::all();
+
 
         
             $feede = feed::find(1);
@@ -266,35 +231,4 @@ class sen_con extends Controller
         
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
-    }
 }
