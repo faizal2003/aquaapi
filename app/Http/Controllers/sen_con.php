@@ -152,10 +152,6 @@ class sen_con extends Controller
             $schedule = null
         );
 
-        }else {
-            Http::get('aquaapi.test/unwarn/phu');
-            Http::get('aquaapi.test/unwarn/phd');
-            # code...
         }
 
         $aidi = $coll->pluck('time');
@@ -184,10 +180,6 @@ class sen_con extends Controller
             $buttons = null, 
             $schedule = null
         );
-            Http::get('aquaapi.test/warn/wl');
-        }elseif ($request->val >= 30) {
-            # code...
-            Http::get('aquaapi.test/unwarn/wl');
         }
 
         $aidi = $coll->pluck('time');
